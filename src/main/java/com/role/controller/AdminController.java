@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/secure")
-public class SecureController {
-    @GetMapping("/testsecure")
+@RequestMapping("/admin")
+public class AdminController {
+    @GetMapping("/test")
     public ResponseEntity<String> testSecure() {
-        return ResponseEntity.ok("This is a secure endpoint");
+        return ResponseEntity.ok("This is a admin endpoint");
     }
 }

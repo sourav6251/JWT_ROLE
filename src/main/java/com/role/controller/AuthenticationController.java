@@ -13,9 +13,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api")
 public class AuthenticationController {
 
     private DaoAuthenticationProvider daoAuthenticationProvider;
@@ -30,7 +32,7 @@ public class AuthenticationController {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) {
         try {
             authenticationManager.authenticate(
@@ -41,6 +43,7 @@ public class AuthenticationController {
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        System.out.println(userDetails.toString());
         final String jwt = jwtUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(jwt);

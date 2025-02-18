@@ -3,12 +3,11 @@ package com.role.controller;
 import com.role.dto.UserDTO;
 import com.role.service.DAOService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+
+@RestController
+@RequestMapping("/api")
 public class NonSecureController {
     private final DAOService daoService;
 
